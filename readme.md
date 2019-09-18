@@ -1,3 +1,6 @@
+## Dependencies installationg
+`composer install`
+
 ## Initial database setup
 `php artisan migrate:fresh`
 
