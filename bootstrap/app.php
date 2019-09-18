@@ -65,7 +65,7 @@ $app->singleton(
 
 $app->routeMiddleware([
     'auth'             => App\Http\Middleware\Authenticate::class,
-    'auth.grant_token' => App\Http\Middleware\GrantTokenMiddleware::class,
+    'owner' => App\Http\Middleware\Owner::class,
 ]);
 
 /*

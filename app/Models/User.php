@@ -38,14 +38,12 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     ];
 
     /**
-     * Scope token with grant type.
-     *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param $value
      */
-    public function scopeGrantToken($query): Builder
+    public function setPasswordAttribute($value)
     {
-        return $query->where('client_id', env('GRANT_CLIENT_ID'));
+        if (Hash::needsRehash($value)) {
+            $this->attributes['password'] = Hash::make($value);
+        }
     }
 }
